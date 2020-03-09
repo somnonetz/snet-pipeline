@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Pipeline xmlns="http://nrg.wustl.edu/pipeline" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nrgString="java:org.nrg.pipeline.utils.StringUtils" xsi:schemaLocation="http://nrg.wustl.edu/pipeline ..\schema\pipeline.xsd">
-	<name>snet-pipeline</name>
-	<location>snet-pipeline</location>
-	<description>Execution of polysomnography analysis tools</description>
+	<name>somnonetz-pipeline</name>
+	<location>somnonetz-pipeline</location>
+	<description>Pipeline for use with snet-plugin</description>
 	<documentation>
 		<input-parameters>
 			<parameter>
@@ -33,20 +33,6 @@
 				</values>
 				<description>The XNAT session ID</description>
 			</parameter>
-			<parameter>
-				<name>algorithm</name>
-				<values>
-					<csv>sn_getEDFHeaderdata</csv>
-				</values>
-				<description>method for </description>
-			</parameter>
-			<parameter>
-				<name>notify</name>
-				<values>
-					<csv>0</csv>
-				</values>
-				<description>Set the value to 1 if you want the pipeline to notify the user when complete. 0 otherwise</description>
-			</parameter>
 		</input-parameters>
 	</documentation>
 	<parameters>
@@ -58,8 +44,8 @@
         </parameter>
 	</parameters>
 	<steps>
-		<step id="0" description="Execute shell script" workdirectory="^/Pipeline/parameters/parameter[name='workdir']/values/unique/text()^">
-			<resource name="snet-resource.xml" location="snet-pipeline/resources">				
+		<step id="0" description="Extract EDF header data and write back to xnat" workdirectory="^/Pipeline/parameters/parameter[name='workdir']/values/unique/text()^">
+			<resource name="extract_edf_header.xml" location="somnonetz-pipeline/resources">				
 				<argument id="session">
 					<value>^/Pipeline/parameters/parameter[name='sessionLabel']/values/unique/text()^</value>
 				</argument>
@@ -71,9 +57,6 @@
 				</argument>
 				<argument id="xnatID">
 					<value>^/Pipeline/parameters/parameter[name='xnatID']/values/unique/text()^</value>
-				</argument>
-				<argument id="algorithm">
-					<value>^/Pipeline/parameters/parameter[name='algorithm']/values/unique/text()^</value>
 				</argument>
 				<argument id="host">
 					<value>^if (count(/Pipeline/parameters/parameter[name='aliasHost']/values) > 0) then /Pipeline/parameters/parameter[name='aliasHost']/values/unique/text() else /Pipeline/parameters/parameter[name='host']/values/unique/text()^</value>

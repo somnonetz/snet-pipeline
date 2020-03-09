@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+import argparse
+from pyxnat import Interface
+from edfrd import read_header
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-session', required=True)
+    parser.add_argument('-subject', required=True)
+    parser.add_argument('-project', required=True)
+    parser.add_argument('-xnatID')
+    parser.add_argument('-host', required=True)
+    parser.add_argument('-user', required=True)
+    parser.add_argument('-pwd', required=True)
+
+    # args = parser.parse_args()
+    # xnat = Interface(args.host, user=args.user, password=args.pwd)
+    # scan = xnat.select(f'/project/{args.project}/subject/{args.subject}/experiment/{args.session}/scan/psg')
+    # remote_edf = scan.resources().files().first()
+    # edf_path = remote_edf.get(f'./{remote_edf.label()}')
+    # header = read_header(edf_path)
+
+    # scan.insert(**{
+    #     'scans': 'snet01:psgScanData',
+    #     'snet01:psgScanData/edfversion': header.version,
+    #     'snet01:psgScanData/patientid': header.local_patient_identification,
+    #     'snet01:psgScanData/localrecordid': header.local_recording_identification,
+    #     'snet01:psgScanData/recordingstartdate': header.startdate_of_recording,
+    #     'snet01:psgScanData/recordingstarttime': header.starttime_of_recording,
+    #     'snet01:psgScanData/numberofheaderbytes': header.number_of_bytes_in_header_record,
+    #     'snet01:psgScanData/reservedheaderfield': header.reserved,
+    #     'snet01:psgScanData/numberofdatarecords': header.number_of_data_records,
+    #     # 'snet01:psgScanData/durationofdatarecordseconds': header.duration_of_a_data_record,
+    #     'snet01:psgScanData/numberofsignalsindatarecord': header.number_of_signals,
+    #     # 'snet01:psgScanData/psgdevice': '?',
+    #     # 'snet01:psgScanData/durationofrecordhours': header.duration_of_a_data_record,
+    #     # 'snet01:psgScanData/continuousdataflag': '0',
+    #     # 'snet01:psgScanData/comment': '',
+    # })

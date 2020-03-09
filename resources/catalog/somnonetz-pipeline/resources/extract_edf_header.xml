@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pip:Resource xmlns:pip="http://nrg.wustl.edu/pipeline">
-	<pip:name>snet-pipeline</pip:name>
-	<pip:location>snet-pipeline/bin</pip:location>
+	<pip:name>extract_edf_header</pip:name>
+	<pip:location>somnonetz-pipeline/bin</pip:location>
 	<pip:type>Executable</pip:type>
-	<pip:description>Executes shell script</pip:description>
+	<pip:description>Extract EDF header data and write back to xnat</pip:description>
 	<pip:input>
 		<pip:argument id="session">
 			<pip:name>session</pip:name>
@@ -20,10 +20,6 @@
 		<pip:argument id="xnatID">
 			<pip:name>xnatID</pip:name>
 			<pip:description>XNAT Session ID</pip:description>
-		</pip:argument>
-		<pip:argument id="algorithm">
-			<pip:name>algorithm</pip:name>
-			<pip:description>algorithm to be applied</pip:description>
 		</pip:argument>
 		<pip:argument id="host">
 			<pip:name>host</pip:name>
