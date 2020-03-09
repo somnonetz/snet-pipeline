@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pip:Resource xmlns:pip="http://nrg.wustl.edu/pipeline">
+	<pip:name>snet-pipeline</pip:name>
+	<pip:location>snet-pipeline/bin</pip:location>
+	<pip:type>Executable</pip:type>
+	<pip:description>Executes shell script</pip:description>
+	<pip:input>
+		<pip:argument id="session">
+			<pip:name>session</pip:name>
+			<pip:description>Project Session Label</pip:description>
+		</pip:argument>
+		<pip:argument id="subject">
+			<pip:name>subject</pip:name>
+			<pip:description>XNAT Subject ID</pip:description>
+		</pip:argument>
+		<pip:argument id="project">
+			<pip:name>project</pip:name>
+			<pip:description>XNAT Project ID to which the Session belongs</pip:description>
+		</pip:argument>
+		<pip:argument id="xnatID">
+			<pip:name>xnatID</pip:name>
+			<pip:description>XNAT Session ID</pip:description>
+		</pip:argument>
+		<pip:argument id="algorithm">
+			<pip:name>algorithm</pip:name>
+			<pip:description>algorithm to be applied</pip:description>
+		</pip:argument>
+		<pip:argument id="host">
+			<pip:name>host</pip:name>
+			<pip:description>XNAT Host</pip:description>
+		</pip:argument>
+		<pip:argument id="user">
+			<pip:name>user</pip:name>
+			<pip:description>XNAT Username</pip:description>
+		</pip:argument>
+		<pip:argument id="pwd" isSensitive="true">
+			<pip:name>pwd</pip:name>
+			<pip:description>XNAT Password</pip:description>
+		</pip:argument>
+	</pip:input>
+</pip:Resource>
