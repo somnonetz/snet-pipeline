@@ -35,10 +35,10 @@ if __name__ == "__main__":
         'snet01:psgScanData/numberofdatarecords': edf_header.number_of_data_records,
         'snet01:psgScanData/durationofdatarecordseconds': edf_header.duration_of_a_data_record,
         'snet01:psgScanData/numberofsignalsindatarecord': edf_header.number_of_signals,
-        # 'snet01:psgScanData/psgdevice': '?',
+        'snet01:psgScanData/psgdevice': '_'.join(edf_header.local_recording_identification.split(' ')[4:]),
         'snet01:psgScanData/durationofrecordhours': edf_header.duration_of_a_data_record / 3600,
-        # 'snet01:psgScanData/continuousdataflag': '0',
-        # 'snet01:psgScanData/comment': '',
+        # 'snet01:psgScanData/continuousdataflag': '0',  # skip
+        # 'snet01:psgScanData/comment': '',  # skip
     })
 
     for i, signal_header in enumerate(edf_header.signals):
@@ -46,9 +46,8 @@ if __name__ == "__main__":
             'scans': 'snet01:psgScanData',
             'snet01:psgScanData/records/record/labeldevice': signal_header.label,
             'snet01:psgScanData/records/record/labelstandard': signal_header.label,
-            'snet01:psgScanData/records/record/channelnumberdevice': i,
-            'snet01:psgScanData/records/record/channelnumberstandard': i,
-            # 'snet01:psgScanData/records/record/numberofchunks': ,
+            'snet01:psgScanData/records/record/channelnumberdevice': i + 1,
+            'snet01:psgScanData/records/record/channelnumberstandard': i + 1,
             'snet01:psgScanData/records/record/samplingrate': signal_header.nr_of_samples_in_each_data_record / edf_header.duration_of_a_data_record,
             'snet01:psgScanData/records/record/transducertype': signal_header.transducer_type,
             'snet01:psgScanData/records/record/physicaldimension': signal_header.physical_dimension,
@@ -56,7 +55,9 @@ if __name__ == "__main__":
             'snet01:psgScanData/records/record/physicalmaximum': signal_header.physical_maximum,
             'snet01:psgScanData/records/record/digitalminimum': signal_header.digital_minimum,
             'snet01:psgScanData/records/record/digitalmaximum': signal_header.digital_maximum,
-            # 'snet01:psgScanData/records/record/prefiltering': ,
+            'snet01:psgScanData/records/record/prefiltering': signal_header.prefiltering,
             'snet01:psgScanData/records/record/samplesinrecord': signal_header.nr_of_samples_in_each_data_record,
             'snet01:psgScanData/records/record/reserved': signal_header.reserved,
+            # 'snet01:psgScanData/records/record/numberofchunks': , # skip
+            # 'snet01:psgScanData/records/record/comment': ' ',  # skip
         })
