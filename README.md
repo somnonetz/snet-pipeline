@@ -2,7 +2,7 @@
 
 xnat pipelines for use with snet-plugin
 
-# Prerequisists
+# Prerequisites
 
 * python3
 * [edfrd](https://github.com/somnonetz/edfrd)
