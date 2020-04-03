@@ -4,9 +4,17 @@ xnat pipelines for use with snet-plugin
 
 # Prerequisites
 
+### extract_edf_header
+
 * python3
 * [edfrd](https://github.com/somnonetz/edfrd)
 * [pyxnat](https://github.com/pyxnat/pyxnat)
+
+### upload_to_sse
+
+* nodejs
+* [asclepios-sse-client](https://github.com/somnonetz/asclepios-sse-client)
+* [argparse](https://github.com/nodeca/argparse)
 
 # Usage
 

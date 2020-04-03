@@ -69,5 +69,21 @@
 				</argument>
 			</resource>
 		</step>
+		<step id="1" description="Upload EDF metadata to the ASCLEPIOS symmetric searchable encryption service" workdirectory="^/Pipeline/parameters/parameter[name='workdir']/values/unique/text()^">
+			<resource name="upload_to_sse.xml" location="somnonetz-pipeline/resources">
+				<argument id="xnatID">
+					<value>^/Pipeline/parameters/parameter[name='xnatID']/values/unique/text()^</value>
+				</argument>
+				<argument id="host">
+					<value>^if (count(/Pipeline/parameters/parameter[name='aliasHost']/values) > 0) then /Pipeline/parameters/parameter[name='aliasHost']/values/unique/text() else /Pipeline/parameters/parameter[name='host']/values/unique/text()^</value>
+				</argument>
+				<argument id="user">
+					<value>^/Pipeline/parameters/parameter[name='user']/values/unique/text()^</value>
+				</argument>
+				<argument id="pwd">
+					<value>^/Pipeline/parameters/parameter[name='pwd']/values/unique/text()^</value>
+				</argument>
+			</resource>
+		</step>
 	</steps>
 </Pipeline>
