@@ -13,8 +13,9 @@ xnat pipelines for use with snet-plugin
 ### upload_to_sse
 
 * nodejs
-* [asclepios-sse-client](https://github.com/somnonetz/asclepios-sse-client)
 * [argparse](https://github.com/nodeca/argparse)
+* [asclepios-sse-client](https://github.com/somnonetz/asclepios-sse-client)
+* [XnatDataClient](https://wiki.xnat.org/xnat-tools/xnatdataclient)
 
 # Usage
 
