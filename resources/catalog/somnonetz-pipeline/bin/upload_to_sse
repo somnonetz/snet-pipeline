@@ -15,11 +15,18 @@ const { xnatID, host, user, pwd } = parser.parseArgs();
 const XnatDataClient = '/data/xnat/pipeline/xnat-tools/XnatDataClient'
 const args = ['-u', user, '-p', pwd, '-r', `${host}/REST/experiments/${xnatID}/scans/psg?format=json`];
 
-const { SSE_URL, SSE_KEY_G, SSE_KENC, TA_URL, SALT_VALUE, IV_VALUE } = process.env;
+const {
+    SSE_CLIENT_SSE_SERVER_URL,
+    SSE_CLIENT_KEY_G,
+    SSE_CLIENT_KENC,
+    SSE_CLIENT_TA_URL,
+    SSE_CLIENT_SALT_VALUE,
+    SSE_CLIENT_IV_VALUE
+} = process.env;
 
-if (!(SSE_URL && SSE_KEY_G && SSE_KENC && TA_URL && SALT_VALUE && IV_VALUE)) {
-    throw 'One or more of the following environment variables are not set: ' +
-        'SSE_URL, SSE_KEY_G, SSE_KENC, TA_URL, SALT_VALUE, IV_VALUE';
+if (!(SSE_CLIENT_SSE_SERVER_URL && SSE_CLIENT_KEY_G && SSE_CLIENT_KENC && SSE_CLIENT_TA_URL && SSE_CLIENT_SALT_VALUE && SSE_CLIENT_IV_VALUE)) {
+    throw 'One or more of the following environment variables not set: ' +
+        'SSE_CLIENT_SSE_SERVER_URL, SSE_CLIENT_KEY_G, SSE_CLIENT_KENC, SSE_CLIENT_TA_URL, SSE_CLIENT_SALT_VALUE, SSE_CLIENT_IV_VALUE';
 }
 
 execFile(XnatDataClient, args, function callback(error, stdout, stderr) {
@@ -30,5 +37,5 @@ execFile(XnatDataClient, args, function callback(error, stdout, stderr) {
     const session = JSON.parse(stdout);
     const data = session.items[0].data_fields;
 
-    uploadData(data, data.image_session_ID, SSE_KEY_G, SSE_KENC);
+    uploadData(data, data.image_session_ID, SSE_CLIENT_KEY_G, SSE_CLIENT_KENC);
 });
