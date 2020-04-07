@@ -18,7 +18,7 @@ const args = ['-u', user, '-p', pwd, '-r', `${host}/REST/experiments/${xnatID}/s
 const { SSE_URL, SSE_KEY_G, SSE_KENC, TA_URL, SALT_VALUE, IV_VALUE } = process.env;
 
 if (!(SSE_URL && SSE_KEY_G && SSE_KENC && TA_URL && SALT_VALUE && IV_VALUE)) {
-    throw 'One or more of the following environment variables are on set: ' +
+    throw 'One or more of the following environment variables are not set: ' +
         'SSE_URL, SSE_KEY_G, SSE_KENC, TA_URL, SALT_VALUE, IV_VALUE';
 }
 
