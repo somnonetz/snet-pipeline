@@ -1,31 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Pipeline xmlns="http://nrg.wustl.edu/pipeline" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nrgString="java:org.nrg.pipeline.utils.StringUtils" xsi:schemaLocation="http://nrg.wustl.edu/pipeline ../schema/pipeline.xsd">
-	<name>somnonetz-pipeline</name>
-	<location>somnonetz-pipeline</location>
-	<description>Pipeline for use with snet-plugin</description>
+	<name>asclepios-pipeline</name>
+	<location>asclepios-pipeline</location>
+	<description>Pipeline for use with ASCLEPIOS crypto services</description>
 	<documentation>
 		<input-parameters>
-			<parameter>
-				<name>sessionLabel</name>
-				<values>
-					<schemalink>xnat:imageSessionData/label</schemalink>
-				</values>
-				<description>The experiments label</description>
-			</parameter>
-			<parameter>
-				<name>subject</name>
-				<values>
-					<schemalink>xnat:imageSessionData/subject_ID</schemalink>
-				</values>
-				<description>The experiments subject ID</description>
-			</parameter>
-			<parameter>
-				<name>project</name>
-				<values>
-					<schemalink>xnat:imageSessionData/project</schemalink>
-				</values>
-				<description>The experiments project ID</description>
-			</parameter>
 			<parameter>
 				<name>xnatID</name>
 				<values>
@@ -44,17 +23,8 @@
         </parameter>
 	</parameters>
 	<steps>
-		<step id="0" description="Extract EDF header data and write back to xnat" workdirectory="^/Pipeline/parameters/parameter[name='workdir']/values/unique/text()^">
-			<resource name="extract_edf_header.xml" location="somnonetz-pipeline/resources">				
-				<argument id="session">
-					<value>^/Pipeline/parameters/parameter[name='sessionLabel']/values/unique/text()^</value>
-				</argument>
-				<argument id="subject">
-					<value>^/Pipeline/parameters/parameter[name='subject']/values/unique/text()^</value>
-				</argument>
-				<argument id="project">
-					<value>^/Pipeline/parameters/parameter[name='project']/values/unique/text()^</value>
-				</argument>
+		<step id="0" description="Upload EDF metadata to the ASCLEPIOS symmetric searchable encryption service" workdirectory="^/Pipeline/parameters/parameter[name='workdir']/values/unique/text()^">
+			<resource name="upload_to_sse.xml" location="asclepios-pipeline/resources">
 				<argument id="xnatID">
 					<value>^/Pipeline/parameters/parameter[name='xnatID']/values/unique/text()^</value>
 				</argument>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pip:Resource xmlns:pip="http://nrg.wustl.edu/pipeline">
 	<pip:name>upload_to_sse</pip:name>
-	<pip:location>somnonetz-pipeline/bin</pip:location>
+	<pip:location>asclepios-pipeline/bin</pip:location>
 	<pip:type>Executable</pip:type>
 	<pip:description>Upload EDF metadata to the ASCLEPIOS symmetric searchable encryption service</pip:description>
 	<pip:input>
